@@ -1,22 +1,23 @@
-pipeline{
+pipeline {
+    agent any
         stages{
-        stage('clone'){
-            steps{
+            stage('Clone'){
+                steps{
+                    sh 'echo "clone"'
+                }
+            }
+            stage('test'){
+                steps{
+                    sh 'echo "test"'
+                }
+            }
+            stage ('Createfile'){
+                steps{
+                    sh 'touch text-$BUILD_ID'
+                }
             }
         }
-        stage('test') {
-    
-            steps{
-            sh 'echo "test"'
-        }
-    }
-        stage('createfile'){
-            steps{
-                sh 'touch text-$BUILD_ID'
-            }
-        }
-        }
-    }
-
+       
+}
 
     
