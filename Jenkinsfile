@@ -4,11 +4,11 @@ pipeline{
         stage('clone'){
             steps{
                 sh 'echo "clone"'
-            }
+            
         }
     }
-    stage('test'){
-        steps{
+        stage('test'){
+            steps{
             sh 'echo "test"'
         }
         stage('createfile'){
@@ -16,6 +16,8 @@ pipeline{
                 sh 'touch text-$BUILD_ID'
             }
         }
+        }
     }
 }
+
     
