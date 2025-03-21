@@ -17,17 +17,21 @@ pipeline {
             stage('dockerImageBuild'){
                 steps{
                     sh 'docker build -t jenkins-new-ci .'
+                    sh 'docker build -t imageversion .'
                 }
             }
             stage('dockerImageTag'){
                 steps{
                     sh 'docker tag jenkins-new-ci:latest\
                      585008070473.dkr.ecr.us-east-1.amazonaws.com/jenkins-new-ci:latest'
+                     sh 'docker tag imageversion \
+                     585008070473.dkr.ecr.us-east-1.amazonaws.com/jenkins-new-ci:v1.$BUILD_NUMBER'
                 }
             }
             stage('pushImage'){
                 steps{
                     sh 'docker push 585008070473.dkr.ecr.us-east-1.amazonaws.com/jenkins-new-ci:latest'
+                    sh 'docker push 585008070473.dkr.ecr.us-east-1.amazonaws.com/jenkins-new-ci:v1.$BUILD_NUMBER'
                 }
             }
         }
