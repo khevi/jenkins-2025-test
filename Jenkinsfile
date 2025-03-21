@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-    environment(
+    environment{
         AWS_REGION = 'us-east-1'
         IMAGE_ECR_REPO = '585008070473.dkr.ecr.us-east-1.amazonaws.com/jenkins-new-ci'
         ECR_REPO = '585008070473.dkr.ecr.us-east-1.amazonaws.com'
-    )
+    }
         stages{
             stage('codescan'){
                 steps{
